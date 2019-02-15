@@ -102,11 +102,11 @@ class TaskProcessor(object):
     def process_pages(self, _contents, _keyword):
 
         def get_data(repository):
-            if not repository.last_modified:
-                try:
-                    repository.update()
-                except UnknownObjectException:
-                    pass
+            # if not repository.last_modified:
+            #     try:
+            #         repository.update()
+            #     except UnknownObjectException:
+            #         pass
             return {
                 'task': self.task,
                 'keyword': _keyword,
