@@ -113,7 +113,7 @@ class TaskProcessor(object):
                 'html_url': repository.html_url,
                 'last_modified': dateutil.parser.parse(repository.last_modified) if repository.last_modified else None,
                 'file_name': repository.name,
-                'fragment': repository.description,
+                'fragment': str(repository.description),
                 'repo_name': repository.name,
                 'repo_url': repository.html_url,
                 'user_avatar': repository.owner.avatar_url,
