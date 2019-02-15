@@ -153,8 +153,8 @@ class TaskProcessor(object):
             else:
                 data = get_data(repository)
                 f = open("out1.txt", "a")
-                for key in update_data:
-                    f.write(key + ":" + update_data[key])
+                for key in data:
+                    f.write(key + ":" + data[key])
                 f.close()
                 #self.email_results.append(data)
                 Leakage(**data).save()
