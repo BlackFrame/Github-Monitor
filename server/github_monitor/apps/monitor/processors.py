@@ -103,7 +103,7 @@ class TaskProcessor(object):
 
         def get_data(repository):
             f = open("time.txt","w")
-            f.write(dateutil.parser.parse(repository.last_modified))
+            f.write(dateutil.parser.parse(repository.updated_at))
             f.close()
             if not repository.last_modified:
                 try:
@@ -114,7 +114,7 @@ class TaskProcessor(object):
                 'task': self.task,
                 'keyword': _keyword,
                 'html_url': repository.html_url,
-                'last_modified': dateutil.parser.parse(repository.last_modified),
+                'last_modified': dateutil.parser.parse(repository.updated_at),
                 'file_name': repository.name,
                 'fragment': str(repository.description),
                 'repo_name': repository.name,
