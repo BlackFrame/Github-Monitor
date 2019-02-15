@@ -148,13 +148,13 @@ class TaskProcessor(object):
                     update_data.update({'status': 0, 'add_time': timezone.now()})
                     f = open("out.txt", "a")
                     for key in update_data:
-                        f.write(key + ":" + update_data[key])
+                        f.write(key + ":" + update_data[key]+"\n")
                     exists_leakages.filter(status=1).update(**update_data)
             else:
                 data = get_data(repository)
                 f = open("out1.txt", "a")
                 for key in data:
-                    f.write(key + ":" + data[key])
+                    f.write(key + ":" + data[key]+"\n")
                 f.close()
                 #self.email_results.append(data)
                 Leakage(**data).save()
