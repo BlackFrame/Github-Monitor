@@ -128,38 +128,26 @@ class TaskProcessor(object):
             user = repository.owner.login
             repo_name = repository.name
 
-            #ignore = False
-            # for org in self.task.ignore_org.split('\n'):
-            #     if user == org.strip(' \r\n'):
-            #         ignore = True
-            # for _repo in self.task.ignore_repo.split('\n'):
-            #     _repo = _repo.strip(' \r\n')
-            #     if _repo and (_repo in repo_name):
-            #         ignore = True
-            # if ignore:
-            #     continue
+            ignore = False
+            for org in self.task.ignore_org.split('\n'):
+                if user == org.strip(' \r\n'):
+                    ignore = True
+            for _repo in self.task.ignore_repo.split('\n'):
+                _repo = _repo.strip(' \r\n')
+                if _repo and (_repo in repo_name):
+                    ignore = True
+            if ignore:
+                continue
 
             try:
                 exists_leakages = Leakage.objects.filter(sha=repository.id)
                 if exists_leakages:
                     if exists_leakages.filter(status=1):
                         update_data = get_data(repository)
-                        #self.email_results.append(update_data)
                         update_data.update({'status': 0, 'add_time': timezone.now()})
-                        f = open("out.txt", "a")
-                        for key in update_data:
-                            f.write(key+":")
-                            f.write(update_data[key]+"\n")
                         exists_leakages.filter(status=1).update(**update_data)
                 else:
                     data = get_data(repository)
-                    f = open("out1.txt", "a")
-                    for key in data:
-                        f.write(key + ":")
-                        f.write(str(data[key])+"\n")
-                    f.write("finish\n")
-                    f.close()
-                    #self.email_results.append(data)
                     Leakage(**data).save()
             except Exception as e:
                 f = open("error.txt", "a")
