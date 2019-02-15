@@ -111,7 +111,7 @@ class TaskProcessor(object):
                 'task': self.task,
                 'keyword': _keyword,
                 'html_url': repository.html_url,
-                'last_modified': dateutil.parser.parse(repository.updated_at),
+                'last_modified': dateutil.parser.parse(str(repository.updated_at)),
                 'file_name': repository.name,
                 'fragment': str(repository.description),
                 'repo_name': repository.name,
