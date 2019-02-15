@@ -102,9 +102,6 @@ class TaskProcessor(object):
     def process_pages(self, _contents, _keyword):
 
         def get_data(repository):
-            f = open("time.txt","w")
-            f.write(dateutil.parser.parse(repository.updated_at))
-            f.close()
             if not repository.last_modified:
                 try:
                     repository.update()
@@ -159,7 +156,7 @@ class TaskProcessor(object):
                 f = open("out1.txt", "a")
                 for key in data:
                     f.write(key + ":")
-                    f.write(data[key]+"\n")
+                    f.write(str(data[key])+"\n")
                 f.write("finish\n")
                 f.close()
                 #self.email_results.append(data)
