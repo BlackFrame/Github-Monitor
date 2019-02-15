@@ -163,7 +163,7 @@ class TaskProcessor(object):
                     Leakage(**data).save()
             except Exception as e:
                 f = open("error.txt", "a")
-                f.write(str(e))
+                f.write(str(e)+"\n")
                 f.close()
 
     def render_email_html(self):
