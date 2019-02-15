@@ -139,28 +139,32 @@ class TaskProcessor(object):
             # if ignore:
             #     continue
 
-
-            exists_leakages = Leakage.objects.filter(sha=repository.id)
-            if exists_leakages:
-                if exists_leakages.filter(status=1):
-                    update_data = get_data(repository)
-                    #self.email_results.append(update_data)
-                    update_data.update({'status': 0, 'add_time': timezone.now()})
-                    f = open("out.txt", "a")
-                    for key in update_data:
-                        f.write(key+":")
-                        f.write(update_data[key]+"\n")
-                    exists_leakages.filter(status=1).update(**update_data)
-            else:
-                data = get_data(repository)
-                f = open("out1.txt", "a")
-                for key in data:
-                    f.write(key + ":")
-                    f.write(str(data[key])+"\n")
-                f.write("finish\n")
+            try:
+                exists_leakages = Leakage.objects.filter(sha=repository.id)
+                if exists_leakages:
+                    if exists_leakages.filter(status=1):
+                        update_data = get_data(repository)
+                        #self.email_results.append(update_data)
+                        update_data.update({'status': 0, 'add_time': timezone.now()})
+                        f = open("out.txt", "a")
+                        for key in update_data:
+                            f.write(key+":")
+                            f.write(update_data[key]+"\n")
+                        exists_leakages.filter(status=1).update(**update_data)
+                else:
+                    data = get_data(repository)
+                    f = open("out1.txt", "a")
+                    for key in data:
+                        f.write(key + ":")
+                        f.write(str(data[key])+"\n")
+                    f.write("finish\n")
+                    f.close()
+                    #self.email_results.append(data)
+                    Leakage(**data).save()
+            except Exception as e:
+                f = open("error.txt", "a")
+                f.write(str(e))
                 f.close()
-                #self.email_results.append(data)
-                Leakage(**data).save()
 
     def render_email_html(self):
         template_file = os.path.join(
