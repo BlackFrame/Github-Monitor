@@ -9,4 +9,3 @@ config.ini
 data/
 db.sqlite3
 github.db
-.env

@@ -18,5 +18,5 @@ services:
     volumes:
       - ./docker/data/mysql/:/var/lib/mysql/
     environment:
-      MYSQL_ROOT_PASSWORD: vipkid@2018
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: github

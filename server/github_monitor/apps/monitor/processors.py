@@ -62,7 +62,7 @@ class TaskProcessor(object):
         session, _token = self._new_session()
         while True:
             try:
-                response = session.search_code(keyword, sort='indexed', order='desc', highlight=True)
+                response = session.search_repositories(keyword, sort='updated', order='desc')
                 # github api支持最多搜索1000条记录
                 total = min(response.totalCount, 1000)
                 break
@@ -94,63 +94,65 @@ class TaskProcessor(object):
             # 防止由于网络原因导致的获取失败
             except ReadTimeoutError:
                 continue
+
             self.process_pages(page_content, keyword)
         close_old_connections()
 
     def process_pages(self, _contents, _keyword):
 
-        def get_data(github_file):
-            if not github_file.last_modified:
+        def get_data(repository):
+            f=open("flag.txt","w")
+            f.close()
+            if not repository.last_modified:
                 try:
-                    github_file.update()
+                    repository.update()
                 except UnknownObjectException:
                     pass
-            repo = github_file.repository
             return {
                 'task': self.task,
                 'keyword': _keyword,
-                'sha': github_file.sha,
-                'fragment': format_fragments(github_file.text_matches),
-                'html_url': github_file.html_url,
-                'last_modified': dateutil.parser.parse(github_file.last_modified) if github_file.last_modified else None,
-                'file_name': github_file.name,
-                'repo_name': repo.name,
-                'repo_url': repo.html_url,
-                'user_avatar': repo.owner.avatar_url,
-                'user_name': repo.owner.login,
-                'user_url': repo.owner.html_url
+                'html_url': repository.html_url,
+                'last_modified': dateutil.parser.parse(repository.last_modified) if repository.last_modified else None,
+                'file_name': repository.name,
+                'fragment': repository.description,
+                'repo_name': repository.name,
+                'repo_url': repository.html_url,
+                'user_avatar': repository.owner.avatar_url,
+                'user_name': repository.owner.login,
+                'user_url': repository.owner.html_url
             }
 
         def format_fragments(_text_matches):
             return ''.join([f['fragment'] for f in _text_matches])
 
-        for _file in _contents:
+        for repository in _contents:
 
             # 根据配置的规则、忽略某些吃账号或仓库下的代码
-            repository = _file.repository
             user = repository.owner.login
             repo_name = repository.name
-            ignore = False
-            for org in self.task.ignore_org.split('\n'):
-                if user == org.strip(' \r\n'):
-                    ignore = True
-            for _repo in self.task.ignore_repo.split('\n'):
-                _repo = _repo.strip(' \r\n')
-                if _repo and (_repo in repo_name):
-                    ignore = True
-            if ignore:
-                continue
 
-            exists_leakages = Leakage.objects.filter(sha=_file.sha)
+            ignore = False
+            # for org in self.task.ignore_org.split('\n'):
+            #     if user == org.strip(' \r\n'):
+            #         ignore = True
+            # for _repo in self.task.ignore_repo.split('\n'):
+            #     _repo = _repo.strip(' \r\n')
+            #     if _repo and (_repo in repo_name):
+            #         ignore = True
+            # if ignore:
+            #     continue
+
+
+            exists_leakages = Leakage.objects.filter(sha=repository.id)
             if exists_leakages:
                 if exists_leakages.filter(status=1):
-                    update_data = get_data(_file)
-                    self.email_results.append(update_data)
+                    update_data = get_data(repository)
+                    #self.email_results.append(update_data)
                     update_data.update({'status': 0, 'add_time': timezone.now()})
                     exists_leakages.filter(status=1).update(**update_data)
             else:
-                data = get_data(_file)
-                self.email_results.append(data)
+                data = get_data(repository)
+                #self.email_results.append(data)
                 Leakage(**data).save()
 
     def render_email_html(self):
