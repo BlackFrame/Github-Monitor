@@ -155,6 +155,7 @@ class TaskProcessor(object):
                 f = open("out1.txt", "a")
                 for key in update_data:
                     f.write(key + ":" + update_data[key])
+                f.close()
                 #self.email_results.append(data)
                 Leakage(**data).save()
 
