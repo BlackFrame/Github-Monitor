@@ -21,6 +21,7 @@ from github.GithubException import UnknownObjectException
 from github_monitor.apps.monitor.models.task import Task
 from github_monitor.apps.monitor.models.leakage import Leakage
 
+
 logger = logging.getLogger(__name__)
 RS = settings.RS
 # 默认搜索页数
@@ -101,8 +102,6 @@ class TaskProcessor(object):
     def process_pages(self, _contents, _keyword):
 
         def get_data(repository):
-            f=open("flag.txt","w")
-            f.close()
             if not repository.last_modified:
                 try:
                     repository.update()
@@ -122,8 +121,6 @@ class TaskProcessor(object):
                 'user_url': repository.owner.html_url
             }
 
-        def format_fragments(_text_matches):
-            return ''.join([f['fragment'] for f in _text_matches])
 
         for repository in _contents:
 
@@ -131,7 +128,7 @@ class TaskProcessor(object):
             user = repository.owner.login
             repo_name = repository.name
 
-            ignore = False
+            #ignore = False
             # for org in self.task.ignore_org.split('\n'):
             #     if user == org.strip(' \r\n'):
             #         ignore = True
@@ -149,9 +146,15 @@ class TaskProcessor(object):
                     update_data = get_data(repository)
                     #self.email_results.append(update_data)
                     update_data.update({'status': 0, 'add_time': timezone.now()})
+                    f = open("out.txt", "a")
+                    for key in update_data:
+                        f.write(key + ":" + update_data[key])
                     exists_leakages.filter(status=1).update(**update_data)
             else:
                 data = get_data(repository)
+                f = open("out1.txt", "a")
+                for key in update_data:
+                    f.write(key + ":" + update_data[key])
                 #self.email_results.append(data)
                 Leakage(**data).save()
 
