@@ -12,7 +12,7 @@ export default {
 
   state: {
     page: 0,
-    page_size: 10,
+    page_size: 50,
     status: '0',
     task: '',
     results: [],
