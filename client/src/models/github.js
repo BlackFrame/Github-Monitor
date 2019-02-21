@@ -62,7 +62,7 @@ export default {
         type: 'fetchLeakageLists',
         payload: {
           page: 1,
-          pageSize,
+          pageSize:50,
           task,
           status: payload.status,
         },
@@ -83,7 +83,7 @@ export default {
         type: 'fetchLeakageLists',
         payload: {
           page,
-          pageSize,
+          pageSize:50,
           task: payload.task,
           status,
         },
