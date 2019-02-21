@@ -118,7 +118,8 @@ class TaskProcessor(object):
                 'repo_url': repository.html_url,
                 'user_avatar': repository.owner.avatar_url,
                 'user_name': repository.owner.login,
-                'user_url': repository.owner.html_url
+                'user_url': repository.owner.html_url,
+                'sha':repository.id
             }
 
 
@@ -142,10 +143,12 @@ class TaskProcessor(object):
             try:
                 exists_leakages = Leakage.objects.filter(sha=repository.id)
                 if exists_leakages:
-                    if exists_leakages.filter(status=1):
+                    if exists_leakages.status==2 and str(exists_leakages.last_modified)==str(repository.updated_at):
+                        continue
+                    else:
                         update_data = get_data(repository)
                         update_data.update({'status': 0, 'add_time': timezone.now()})
-                        exists_leakages.filter(status=1).update(**update_data)
+                        exists_leakages.update(**update_data)
                 else:
                     data = get_data(repository)
                     Leakage(**data).save()
