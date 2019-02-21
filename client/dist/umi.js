@@ -11308,7 +11308,7 @@
       'task.status.running': '\u8fd0\u884c\u4e2d',
       'task.status.finished': '\u5b8c\u6210',
       'task.operation.edit': '\u7f16\u8f91',
-      'task.operation.edits': '\u7f16\u8f91s',
+      'task.operation.flush': '\u6e05\u9664',
       'task.operation.delete': '\u5220\u9664',
       'task.operation.delete-hint': '\u786e\u5b9a\u8981\u5220\u9664\u8be5\u4efb\u52a1\u5417\uff1f',
       'task.operation.no-operations': '\u65e0\u53ef\u7528\u64cd\u4f5c',
