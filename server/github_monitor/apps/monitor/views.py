@@ -53,7 +53,7 @@ class TaskViewSet(ModelViewSet):
     @action(methods=['PUT'], detail=True, url_path='flush_task', url_name='flush_task')
     def flush_task(self, request, pk):
         Leakage.objects.filter(task_id=pk).update(status=2)
-        return Response('仓库加白成功', status=status.HTTP_200_OK)
+        return Response('仓库组加白成功', status=status.HTTP_200_OK)
 
     def destroy(self, request, *args, **kwargs):
         obj = self.get_object()
