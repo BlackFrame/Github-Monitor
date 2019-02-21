@@ -23170,7 +23170,7 @@
       (t.queryCreateTask = m),
       (t.queryEditTask = g),
       (t.queryRemoveTask = z),
-      (t.queryRemoveReponsity = z),
+      (t.queryRemoveReponsity = hh),
       (t.queryTasksForFilter = M),
       (t.queryTokenLists = x),
       (t.queryCreateToken = k);
@@ -23275,6 +23275,42 @@
                           'return',
                           (0, i.default)(
                             `${a.API_HOST}/api/monitor/result/${n}/ignore_repository/`,
+                            { method: 'PUT', credentials: 'same-origin' }
+                          )
+                        )
+                      );
+                    case 2:
+                    case 'end':
+                      return e.stop();
+                  }
+              },
+              e,
+              this
+            );
+          })
+        )),
+        p.apply(this, arguments)
+      );
+    }
+    function hh(e) {
+      return p.apply(this, arguments);
+    }
+    function pp() {
+      return (
+        (p = (0, c.default)(
+          o.default.mark(function e(t) {
+            var n;
+            return o.default.wrap(
+              function(e) {
+                while (1)
+                  switch ((e.prev = e.next)) {
+                    case 0:
+                      return (
+                        (n = t.id),
+                        e.abrupt(
+                          'return',
+                          (0, i.default)(
+                            `${a.API_HOST}/api/monitor/task/${n}/flush_task/`,
                             { method: 'PUT', credentials: 'same-origin' }
                           )
                         )
