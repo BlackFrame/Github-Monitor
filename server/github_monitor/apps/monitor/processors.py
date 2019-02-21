@@ -186,8 +186,6 @@ class TaskProcessor(object):
             self.task.start_time = timezone.now()
             self.task.finished_time = None
             self.task.save()
-            f=open("1.txt","w")
-            f.close()
             keyword_list = self.task.keywords.split('\n')
             for keyword in keyword_list:
                 _thread = Thread(target=self.search_by_keyword_thread, args=(keyword, ))
@@ -197,8 +195,6 @@ class TaskProcessor(object):
                 th.join()
             connection.close()
             self.task.status = 2
-            f=open("1.txt","w")
-            f.close()
             self.task.finished_time = timezone.now()
             self.task.save()
             try:
