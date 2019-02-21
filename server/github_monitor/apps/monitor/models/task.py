@@ -19,4 +19,3 @@ class Task(models.Model):
     start_time = models.DateTimeField(null=True)
     finished_time = models.DateTimeField(null=True)
     mail = models.TextField(null=True, default='', verbose_name='通知邮箱列表')
-    #id = models.IntegerField(null=True, verbose_name='id号')
