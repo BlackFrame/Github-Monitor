@@ -26,7 +26,7 @@ class LeakageViewSet(ModelViewSet):
             querysets = querysets.filter(task__id=task_id)
         return querysets
 
-
+    @action(methods=['PUT'], detail=True, url_path='ignore_repository', url_name='ignore_repository')
     def ignore_repo(self, request, pk):
         try:
             leak = Leakage.objects.get(id=pk)
@@ -34,10 +34,6 @@ class LeakageViewSet(ModelViewSet):
             return Response('记录不存在', status=status.HTTP_400_BAD_REQUEST)
         Leakage.objects.filter(repo_url=leak.repo_url, status=0).update(status=2)
         return Response('仓库加白成功', status=status.HTTP_200_OK)
-
-    
-    @action(methods=['PUT'], detail=True, url_path='ignore_repository', url_name='ignore_repository')
-
 
 
 class TokenViewSet(ModelViewSet):
@@ -54,12 +50,17 @@ class TaskViewSet(ModelViewSet):
     def get_basic_task_info(self, request, format=None):
         return Response(Task.objects.values('id', 'name').order_by('-id'))
 
-    # def destroy(self, request, *args, **kwargs):
-    #     obj = self.get_object()
-    #     if obj.status != 1:
-    #         return super(TaskViewSet, self).destroy(request, *args, **kwargs)
-    #     else:
-    #         return Response('正在执行的任务不允许删除', status=status.HTTP_400_BAD_REQUEST)
+    @action(methods=['PUT'], detail=True, url_path='flush_task', url_name='flush_task')
+    def flush_task(self, request, pk):
+        Leakage.objects.filter(task_id=pk).update(status=2)
+        return Response('仓库加白成功', status=status.HTTP_200_OK)
+
+    def destroy(self, request, *args, **kwargs):
+        obj = self.get_object()
+        if obj.status != 1:
+            return super(TaskViewSet, self).destroy(request, *args, **kwargs)
+        else:
+            return Response('正在执行的任务不允许删除', status=status.HTTP_400_BAD_REQUEST)
 
 
 class UserView(APIView):

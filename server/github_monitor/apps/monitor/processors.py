@@ -108,7 +108,7 @@ class TaskProcessor(object):
             #     except UnknownObjectException:
             #         pass
             return {
-                'task': self.task,
+                'task_id': self.task.id,
                 'keyword': _keyword,
                 'html_url': repository.html_url,
                 'last_modified': dateutil.parser.parse(str(repository.updated_at)),
@@ -119,7 +119,7 @@ class TaskProcessor(object):
                 'user_avatar': repository.owner.avatar_url,
                 'user_name': repository.owner.login,
                 'user_url': repository.owner.html_url,
-                'sha':repository.id
+                'sha': str(repository.id)
             }
 
 

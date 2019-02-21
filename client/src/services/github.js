@@ -68,10 +68,9 @@ export async function queryRemoveTask(id) {
 }
 
 export async function queryRemoveReponsity(id) {
-  const url = `${API_HOST}/api/monitor/task/${id}.json`;
-
+  const url = `${API_HOST}/api/monitor/task/${id}/flush_task/`;
   return request(url, {
-    method: 'DELETE',
+    method: 'PUT',
     credentials: 'same-origin',
   });
 }
