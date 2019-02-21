@@ -58,7 +58,7 @@ function getRule(req, res, u) {
     dataSource = dataSource.filter(data => data.name.indexOf(params.name) > -1);
   }
 
-  let pageSize = 10;
+  let pageSize = 50;
   if (params.pageSize) {
     pageSize = params.pageSize * 1;
   }

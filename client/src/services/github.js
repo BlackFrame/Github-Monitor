@@ -1,7 +1,7 @@
 import request from '@/utils/request';
 import { API_HOST } from '../constants';
 
-export async function queryLeakageLists({ page = 1, pageSize = 30, status = 'a', task = '' }) {
+export async function queryLeakageLists({ page = 1, pageSize = 50, status = 'a', task = '' }) {
   let url = `${API_HOST}/api/monitor/result.json?page=${page}&page_size=${pageSize}`;
 
   if (status !== 'a') url += `&status=${status}`;
