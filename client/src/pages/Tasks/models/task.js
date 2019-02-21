@@ -1,6 +1,6 @@
 import { message } from 'antd';
 import { formatMessage } from 'umi/locale';
-import { queryTaskLists, queryCreateTask, queryEditTask, queryRemoveTask } from '@/services/github';
+import { queryTaskLists, queryCreateTask, queryEditTask, queryRemoveTask, queryRemoveReponsity } from '@/services/github';
 
 export default {
   namespace: 'task',
