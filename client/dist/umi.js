@@ -11308,9 +11308,10 @@
       'task.status.running': '\u8fd0\u884c\u4e2d',
       'task.status.finished': '\u5b8c\u6210',
       'task.operation.edit': '\u7f16\u8f91',
-      'task.operation.flush': '\u6e05\u9664',
+      'task.operation.flush': '\u6e05\u7a7a',
       'task.operation.delete': '\u5220\u9664',
       'task.operation.delete-hint': '\u786e\u5b9a\u8981\u5220\u9664\u8be5\u4efb\u52a1\u5417\uff1f',
+      'task.operation.flush-hint': '\u786e\u5b9a\u8981\u6e05\u7a7a\u8be5\u4efb\u52a1\u5417\uff1f',
       'task.operation.no-operations': '\u65e0\u53ef\u7528\u64cd\u4f5c',
       'task.operation.no-operations-hint':
         '\u6b63\u5728\u8fd0\u884c\u7684\u4efb\u52a1\u65e0\u6cd5\u7f16\u8f91/\u5220\u9664',

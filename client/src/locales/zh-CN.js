@@ -261,6 +261,7 @@ export default {
   'task.operation.edit': '编辑',
   'task.operation.delete': '删除',
   'task.operation.delete-hint': '确定要删除该任务吗？',
+  'task.operation.flush-hint': '确定要清空该任务吗？',
   'task.operation.no-operations': '无可用操作',
   'task.operation.no-operations-hint': '正在运行的任务无法编辑/删除',
   'task.operation.create-task': '创建任务',
