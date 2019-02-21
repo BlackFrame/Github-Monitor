@@ -433,11 +433,7 @@
                 default.createElement("a", null, k.
                 default.createElement(v.FormattedMessage, {
                         id: "task.operation.delete"
-                    }))),k.
-                default.createElement(n.
-                default, {
-                        type: "vertical"
-                    })))
+                    })))))
                 }]
             }
             componentWillMount() {
