@@ -136,6 +136,37 @@
                 this
               );
             }),
+            removeReponsity: u.default.mark(function e(t, a) {
+              var s, r, p;
+              return u.default.wrap(
+                function(e) {
+                  while (1)
+                    switch ((e.prev = e.next)) {
+                      case 0:
+                        return (
+                          (s = t.id),
+                          (r = a.call),
+                          (p = a.put),
+                          (e.next = 4),
+                          r(o.queryRemoveReponsity, s)
+                        );
+                      case 4:
+                        return (
+                          n.default.success(
+                            (0, c.formatMessage)({ id: 'task.operation.flush-task-success' })
+                          ),
+                          (e.next = 7),
+                          p({ type: 'reload' })
+                        );
+                      case 7:
+                      case 'end':
+                        return e.stop();
+                    }
+                },
+                e,
+                this
+              );
+            }),
             reload: u.default.mark(function e(t, a) {
               var s, r, n, c, o, p;
               return u.default.wrap(

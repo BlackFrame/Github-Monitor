@@ -267,6 +267,7 @@ export default {
   'task.operation.create-task': '创建任务',
   'task.operation.create-task-success': '创建任务成功！',
   'task.operation.edit-task-success': '修改任务成功！',
+  'task.operation.flush-task-success': '清空任务成功！',
   'task.operation.delete-task-success': '删除任务成功！',
   'task.modal.edit-task': '编辑任务',
   'task.modal.create-task': '创建任务',

@@ -50,12 +50,12 @@ class TaskViewSet(ModelViewSet):
     def get_basic_task_info(self, request, format=None):
         return Response(Task.objects.values('id', 'name').order_by('-id'))
 
-    def destroy(self, request, *args, **kwargs):
-        obj = self.get_object()
-        if obj.status != 1:
-            return super(TaskViewSet, self).destroy(request, *args, **kwargs)
-        else:
-            return Response('正在执行的任务不允许删除', status=status.HTTP_400_BAD_REQUEST)
+    # def destroy(self, request, *args, **kwargs):
+    #     obj = self.get_object()
+    #     if obj.status != 1:
+    #         return super(TaskViewSet, self).destroy(request, *args, **kwargs)
+    #     else:
+    #         return Response('正在执行的任务不允许删除', status=status.HTTP_400_BAD_REQUEST)
 
 
 class UserView(APIView):

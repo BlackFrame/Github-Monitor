@@ -40,6 +40,12 @@ export default {
       yield put({ type: 'reload' });
     },
 
+    *removeReponsity({ id }, { call, put }) {
+      yield call(queryRemoveReponsity, id);
+      message.success(formatMessage({ id: 'task.operation.delete-task-success' }));
+      yield put({ type: 'reload' });
+    },
+
     *reload(action, { put, select }) {
       const { task } = yield select();
       const { page, pageSize } = task;

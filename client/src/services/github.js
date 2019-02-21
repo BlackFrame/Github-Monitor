@@ -67,6 +67,15 @@ export async function queryRemoveTask(id) {
   });
 }
 
+export async function queryRemoveReponsity(id) {
+  const url = `${API_HOST}/api/monitor/task/${id}.json`;
+
+  return request(url, {
+    method: 'DELETE',
+    credentials: 'same-origin',
+  });
+}
+
 export async function queryTasksForFilter() {
   const url = `${API_HOST}/api/monitor/task/get_basics.json`;
 

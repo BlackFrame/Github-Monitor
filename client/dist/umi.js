@@ -11318,6 +11318,7 @@
       'task.operation.create-task': '\u521b\u5efa\u4efb\u52a1',
       'task.operation.create-task-success': '\u521b\u5efa\u4efb\u52a1\u6210\u529f\uff01',
       'task.operation.edit-task-success': '\u4fee\u6539\u4efb\u52a1\u6210\u529f\uff01',
+      'task.operation.flush-task-success': '\u6e05\u7a7a\u4efb\u52a1\u6210\u529f\uff01',
       'task.operation.delete-task-success': '\u5220\u9664\u4efb\u52a1\u6210\u529f\uff01',
       'task.modal.edit-task': '\u7f16\u8f91\u4efb\u52a1',
       'task.modal.create-task': '\u521b\u5efa\u4efb\u52a1',
