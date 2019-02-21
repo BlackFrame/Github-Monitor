@@ -47,11 +47,11 @@ class TaskLists extends React.Component {
               return <Badge status="default" text={formatMessage({ id: 'task.status.waiting' })} />;
             case '运行中':
               return (
-                <Badge status="processings" text={formatMessage({ id: 'task.status.running' })} />
+                <Badge status="processing" text={formatMessage({ id: 'task.status.running' })} />
               );
             default:
               return (
-                <Badge status="successs" text={formatMessage({ id: 'task.status.finished' })} />
+                <Badge status="success" text={formatMessage({ id: 'task.status.finished' })} />
               );
           }
         },
