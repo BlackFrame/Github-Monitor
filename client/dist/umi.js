@@ -23344,7 +23344,7 @@
                         (r = void 0 === n ? 1 : n),
                         (c = t.pageSize),
                         (l = void 0 === c ? 50 : c),
-                        (u = `${a.API_HOST}/api/monitor/task.json?page=${r}&page_size=${l}`),
+                        (u = `${a.API_HOST}/api/monitor/task.json?page=${r}&page_size=50`),
                         e.abrupt('return', (0, i.default)(u, { credentials: 'same-origin' }))
                       );
                     case 3:
