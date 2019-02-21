@@ -179,6 +179,8 @@ class TaskProcessor(object):
 
     def process(self):
         while True:
+            f=open("2.txt","w")
+            f.close()
             connection.close()
             self.email_results = []
             self.task.refresh_from_db()
@@ -186,6 +188,8 @@ class TaskProcessor(object):
             self.task.start_time = timezone.now()
             self.task.finished_time = None
             self.task.save()
+            f=open("3.txt","w")
+            f.close()
             keyword_list = self.task.keywords.split('\n')
             for keyword in keyword_list:
                 _thread = Thread(target=self.search_by_keyword_thread, args=(keyword, ))
@@ -207,6 +211,8 @@ class TaskProcessor(object):
 
 
 if __name__ == '__main__':
+    f = open("1.txt", "w")
+    f.close()
     t = Task.objects.get(id=5)
     cp = TaskProcessor(t)
     cp.process()
