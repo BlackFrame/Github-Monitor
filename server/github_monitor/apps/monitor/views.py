@@ -26,7 +26,7 @@ class LeakageViewSet(ModelViewSet):
             querysets = querysets.filter(task__id=task_id)
         return querysets
 
-    @action(methods=['PUT'], detail=True, url_path='ignore_repository', url_name='ignore_repository')
+
     def ignore_repo(self, request, pk):
         try:
             leak = Leakage.objects.get(id=pk)
@@ -34,6 +34,10 @@ class LeakageViewSet(ModelViewSet):
             return Response('记录不存在', status=status.HTTP_400_BAD_REQUEST)
         Leakage.objects.filter(repo_url=leak.repo_url, status=0).update(status=2)
         return Response('仓库加白成功', status=status.HTTP_200_OK)
+
+    
+    @action(methods=['PUT'], detail=True, url_path='ignore_repository', url_name='ignore_repository')
+
 
 
 class TokenViewSet(ModelViewSet):
