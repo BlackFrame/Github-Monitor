@@ -83,15 +83,6 @@ class TaskLists extends React.Component {
                   </a>
                 </TaskModal>
                 <Divider type="vertical" />
-                <Popconfirm
-                  title={formatMessage({ id: 'task.operation.delete-hint' })}
-                  onConfirm={() => this.removeTaskHandler(obj.id)}
-                >
-                  <a>
-                    <FormattedMessage id="task.operation.delete" />
-                  </a>
-                </Popconfirm>
-                <Divider type="vertical" />
                 <TaskModal data={obj} onOk={this.editTaskHandler}>
                   <a>
                     <FormattedMessage id="task.operation.edit" />
