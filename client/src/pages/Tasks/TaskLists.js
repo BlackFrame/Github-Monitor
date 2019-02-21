@@ -79,7 +79,7 @@ class TaskLists extends React.Component {
               <div>
                 <TaskModal data={obj} onOk={this.editTaskHandler}>
                   <a>
-                    <FormattedMessage id="task.operation.edit" />
+                    <FormattedMessage id="task.operation.edits" />
                   </a>
                 </TaskModal>
                 <Divider type="vertical" />
