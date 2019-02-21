@@ -8,7 +8,7 @@ class Leakage(models.Model):
         (1, '已处理'),
         (2, '白名单')
     )
-    #task = models.ForeignKey(Task, null=True, on_delete=models.SET_NULL)
+    task = models.ForeignKey(Task, null=True, on_delete=models.SET_NULL)
     task_id = models.IntegerField(null=False)
     keyword = models.CharField(max_length=256, null=True, default='')
     sha = models.CharField(max_length=40, null=True)
