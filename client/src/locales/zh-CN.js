@@ -258,7 +258,7 @@ export default {
   'task.status.waiting': '等待中',
   'task.status.running': '运行中',
   'task.status.finished': '完成',
-  'task.operation.edit': '编辑',
+  'task.operation.edit': '编辑急',
   'task.operation.flush': '清空',
   'task.operation.delete': '删除',
   'task.operation.delete-hint': '确定要删除该任务吗？',
