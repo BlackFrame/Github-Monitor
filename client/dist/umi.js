@@ -23306,11 +23306,10 @@
                   switch ((e.prev = e.next)) {
                     case 0:
                       return (
-                        (n = t.id),
                         e.abrupt(
                           'return',
                           (0, i.default)(
-                            `${a.API_HOST}/api/monitor/task/${n}/flush_task/`,
+                            `${a.API_HOST}/api/monitor/task/${t}/flush_task/`,
                             { method: 'PUT', credentials: 'same-origin' }
                           )
                         )
@@ -23325,7 +23324,7 @@
             );
           })
         )),
-        pp.apply(this, arguments)
+        p.apply(this, arguments)
       );
     }
     function d(e) {
