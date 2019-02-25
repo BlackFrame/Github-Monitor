@@ -23,7 +23,7 @@ class GithubList extends React.Component {
 
     const payload = {
       page: 1,
-      pageSize: 10,
+      pageSize: 50,
       status: '0',
     };
 
