@@ -59,9 +59,9 @@ function getRule(req, res, u) {
   }
 
   let pageSize = 50;
-  if (params.pageSize) {
-    pageSize = params.pageSize * 1;
-  }
+  // if (params.pageSize) {
+  //   pageSize = params.pageSize * 1;
+  // }
 
   const result = {
     list: dataSource,

@@ -72,7 +72,7 @@ class Gauge extends React.Component {
         nice: true,
       },
     };
-    const data = [{ value: percent / 10 }];
+    const data = [{ value: percent / 50 }];
     return (
       <Chart height={height} data={data} scale={cols} padding={[-16, 0, 16, 0]} forceFit={forceFit}>
         <Coord type="polar" startAngle={-1.25 * Math.PI} endAngle={0.25 * Math.PI} radius={0.8} />
