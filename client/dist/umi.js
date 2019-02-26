@@ -23200,7 +23200,7 @@
                         (s = void 0 === u ? 'a' : u),
                         (f = t.task),
                         (h = void 0 === f ? '' : f),
-                        (p = `${a.API_HOST}/api/monitor/result.json?page=${r}&page_size=${l}`),
+                        (p = `${a.API_HOST}/api/monitor/result.json?page=${r}&page_size=50`),
                         'a' !== s && (p += `&status=${s}`),
                         h && (p += `&task_id=${h}`),
                         e.abrupt('return', (0, i.default)(p, { credentials: 'same-origin' }))
