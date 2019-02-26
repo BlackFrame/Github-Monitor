@@ -1514,7 +1514,7 @@
       l = n('LLXN'),
       u = {
         namespace: 'github',
-        state: { page: 0, page_size: 20, status: '0', task: '', results: [], tasks: [], total: 0 },
+        state: { page: 0, page_size: 50, status: '0', task: '', results: [], tasks: [], total: 0 },
         effects: {
           fetchLeakageLists: i.default.mark(function e(t, n) {
             var r, o, c, l;
